@@ -31,15 +31,22 @@ export default class MovieCard extends Component {
 
   
   render() {
-    if (posterMap[`${this.props.poster}`]!== undefined) {
-      this.props.poster = posterMap[`${this.props.poster}`]};
+    let posterUrl = '';
+    if (posterMap[`${this.props.poster}`] !== undefined) {
+      posterUrl = posterMap[`${this.props.poster}`]
+
+    } else {
+      posterUrl = this.props.poster;
+      console.log(posterUrl)
+    }
 
     return (
       <div className="movie-card">
-        {console.log(posterMap['default'])}
+        
+        <CardFront poster={posterUrl} />
 
-        <CardFront backgroundImage={this.props.poster} />
         <CardBack title={this.props.title} IMDBRating={this.props.IMDBRating} genres={this.props.genres}/>
+      
       </div>
     )
   }
